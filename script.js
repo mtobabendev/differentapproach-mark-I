@@ -270,3 +270,31 @@ window.addEventListener("scroll", setActiveNav, { passive: true });
 window.addEventListener("resize", setActiveNav);
 window.addEventListener("load", setActiveNav);
 setActiveNav();
+
+const izardShowcaseButtons = document.querySelectorAll(".izard-showcase-button");
+const izardFeaturedImage = document.getElementById("izardFeaturedImage");
+const izardFeaturedCaption = document.getElementById("izardFeaturedCaption");
+
+izardShowcaseButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const imageSrc = button.dataset.img;
+    const imageAlt = button.dataset.alt;
+    const imageCaption = button.dataset.caption;
+
+    izardShowcaseButtons.forEach((control) => {
+      const isActive = control === button;
+      control.classList.toggle("is-active", isActive);
+      control.setAttribute("aria-selected", String(isActive));
+    });
+
+    if (izardFeaturedImage && imageSrc && imageAlt) {
+      izardFeaturedImage.src = imageSrc;
+      izardFeaturedImage.alt = imageAlt;
+    }
+
+    if (izardFeaturedCaption && imageCaption) {
+      izardFeaturedCaption.textContent = imageCaption;
+    }
+  });
+});
+

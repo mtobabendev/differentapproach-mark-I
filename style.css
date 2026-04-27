@@ -1047,6 +1047,95 @@ ol {
   aspect-ratio: 4 / 3;
 }
 
+
+
+.izard-showcase {
+  margin-top: 1.75rem;
+}
+
+.izard-showcase-heading {
+  max-width: 720px;
+  margin-bottom: 1.1rem;
+}
+
+.izard-showcase-heading h3 {
+  margin-bottom: 0.55rem;
+  color: #f3efe6;
+  font-size: clamp(1.45rem, 2.2vw, 2.1rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+.izard-showcase-heading p {
+  max-width: 58ch;
+  margin-bottom: 0;
+  color: #d8d2c7;
+}
+
+.izard-showcase-layout {
+  display: grid;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.izard-showcase-feature {
+  min-height: 100%;
+}
+
+.izard-showcase-feature img {
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.izard-showcase-controls {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.izard-showcase-button {
+  display: grid;
+  gap: 0.25rem;
+  width: 100%;
+  min-height: 4.35rem;
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(17, 23, 20, 0.16);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 10px 24px rgba(7, 12, 10, 0.16);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.izard-showcase-button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(47, 111, 99, 0.34);
+  box-shadow: 0 14px 30px rgba(7, 12, 10, 0.2);
+}
+
+.izard-showcase-button.is-active {
+  background: #d8e7e1;
+  border-color: rgba(47, 111, 99, 0.42);
+  box-shadow: 0 14px 30px rgba(7, 12, 10, 0.24);
+}
+
+.izard-showcase-button-title {
+  color: var(--text);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.izard-showcase-button-text {
+  color: var(--text-soft);
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+
 @media (min-width: 700px) {
   .hero-grid,
   .path-explorer {
@@ -1394,5 +1483,34 @@ ol {
     font-size: 0.72rem;
     min-height: 3.05rem;
     padding-inline: 0.2rem;
+  }
+}
+
+@media (min-width: 760px) {
+  .izard-showcase-layout {
+    grid-template-columns: minmax(0, 1.25fr) minmax(17rem, 0.75fr);
+  }
+
+  .izard-showcase-controls {
+    align-content: stretch;
+  }
+
+  .izard-showcase-button {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 699px) {
+  .izard-showcase {
+    margin-top: 1.35rem;
+  }
+
+  .izard-showcase-controls {
+    gap: 0.65rem;
+  }
+
+  .izard-showcase-button {
+    min-height: 4.15rem;
+    padding: 0.9rem 0.95rem;
   }
 }

@@ -547,23 +547,41 @@
                     </article>
                 </div>
 
-                <div class="proof-grid housing-proof-grid" aria-label="Housing environment examples">
-                    <figure class="proof-figure">
-                        <img src="assets/images/izard_house_kitchen.webp" alt="Clean shared kitchen inside a Different Approach Omaha housing environment" loading="lazy" />
-                        <figcaption>Shared kitchen space that supports daily routine.</figcaption>
-                    </figure>
-                    <figure class="proof-figure">
-                        <img src="assets/images/izard_house_living_room.webp" alt="Comfortable shared living room inside a program home" loading="lazy" />
-                        <figcaption>Common areas built for structure and stability.</figcaption>
-                    </figure>
-                    <figure class="proof-figure">
-                        <img src="assets/images/izard_house_bedroom.webp" alt="Bedroom space inside a Different Approach Omaha residence" loading="lazy" />
-                        <figcaption>Residential space connected to the staged housing path.</figcaption>
-                    </figure>
-                    <figure class="proof-figure">
-                        <img src="assets/images/izard_house_gym.webp" alt="Exercise area available in a Different Approach Omaha housing environment" loading="lazy" />
-                        <figcaption>Health and routine support built into the environment.</figcaption>
-                    </figure>
+                <div class="izard-showcase" aria-labelledby="izard-showcase-title">
+                    <div class="izard-showcase-heading">
+                        <h3 id="izard-showcase-title">Inside the Izard House</h3>
+                        <p>Clean, structured spaces that support routine, accountability, and daily progress.</p>
+                    </div>
+
+                    <div class="izard-showcase-layout">
+                        <figure class="proof-figure izard-showcase-feature">
+                            <img id="izardFeaturedImage" src="assets/images/izard_house_kitchen.webp" alt="Clean shared kitchen inside the Izard House supporting daily routine" loading="lazy" />
+                            <figcaption id="izardFeaturedCaption">Shared kitchen space that supports daily routine.</figcaption>
+                        </figure>
+
+                        <div class="izard-showcase-controls" role="tablist" aria-label="Select an Izard House space">
+                            <button class="izard-showcase-button is-active" type="button" role="tab" aria-selected="true" data-img="assets/images/izard_house_kitchen.webp" data-alt="Clean shared kitchen inside the Izard House supporting daily routine" data-caption="Shared kitchen space that supports daily routine.">
+                                <span class="izard-showcase-button-title">Kitchen</span>
+                                <span class="izard-showcase-button-text">Daily rhythm starts with practical shared space.</span>
+                            </button>
+                            <button class="izard-showcase-button" type="button" role="tab" aria-selected="false" data-img="assets/images/izard_house_living_room.webp" data-alt="Comfortable shared living room inside the Izard House" data-caption="Common areas built for structure and stability.">
+                                <span class="izard-showcase-button-title">Living Room</span>
+                                <span class="izard-showcase-button-text">Common areas create steadier connection and accountability.</span>
+                            </button>
+                            <button class="izard-showcase-button" type="button" role="tab" aria-selected="false" data-img="assets/images/izard_house_bedroom.webp" data-alt="Bedroom space inside the Izard House residence" data-caption="Residential space connected to the staged housing path.">
+                                <span class="izard-showcase-button-title">Bedroom</span>
+                                <span class="izard-showcase-button-text">Private residential space supports rest and stability.</span>
+                            </button>
+                            <button class="izard-showcase-button" type="button" role="tab" aria-selected="false" data-img="assets/images/izard_house_gym.webp" data-alt="Exercise area inside the Izard House supporting health and routine" data-caption="Health and routine support built into the environment.">
+                                <span class="izard-showcase-button-title">Gym</span>
+                                <span class="izard-showcase-button-text">Movement, discipline, and wellness are part of rebuilding.</span>
+                            </button>
+                            <button class="izard-showcase-button" type="button" role="tab" aria-selected="false" data-img="assets/images/izard_house_computer_lab.webp" data-alt="Computer lab area inside the Izard House for communication and progress" data-caption="Access to tools that support communication, work, education, and next steps.">
+                                <span class="izard-showcase-button-title">Computer Lab</span>
+                                <span class="izard-showcase-button-text">In-house tools help residents follow through on practical goals.</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
