@@ -171,15 +171,15 @@ ol {
   color: var(--text-soft);
 }
 
-.section > .container > .section-heading h2 {
+.section:not(.cta-section) > .container > .section-heading h2 {
   color: #f3efe6;
 }
 
-.section > .container > .section-heading p {
+.section:not(.cta-section) > .container > .section-heading p {
   color: #d8d2c7;
 }
 
-.section > .container > .section-heading .eyebrow {
+.section:not(.cta-section) > .container > .section-heading .eyebrow {
   color: #a8cec3;
 }
 
@@ -973,8 +973,9 @@ ol {
 
 .proof-figure figcaption {
   margin: 0;
-  padding: 0.85rem 1rem 1rem;
+  padding: 1.25rem 1rem 1.4rem;
   color: var(--text-soft);
+  border-top: 1px solid rgba(17, 23, 20, 0.08);
   font-size: 0.92rem;
   font-weight: 700;
   line-height: 1.45;
@@ -987,6 +988,48 @@ ol {
 
 .hero-proof-figure img {
   aspect-ratio: 16 / 9;
+}
+
+.hero-proof-stack {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.hero-proof-stack .hero-proof-figure {
+  margin-bottom: 0;
+}
+
+.hero-proof-figure-secondary {
+  align-self: start;
+  background: #050505;
+  box-shadow: 0 10px 24px rgba(7, 12, 10, 0.18);
+}
+
+.hero-proof-figure-secondary img {
+  width: 100%;
+  height: clamp(7rem, 16vw, 9.5rem);
+  aspect-ratio: auto;
+  object-fit: contain;
+  object-position: center;
+  padding: 0.75rem;
+  background: #050505;
+}
+
+.hero-proof-figure-secondary figcaption {
+  padding: 0.72rem 0.85rem 0.85rem;
+  font-size: 0.84rem;
+  line-height: 1.38;
+}
+
+.support-proof-composition {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.support-proof-composition .support-proof-figure {
+  margin-bottom: 0;
 }
 
 .support-proof-figure,
@@ -1042,6 +1085,82 @@ ol {
   .how-steps-grid,
   .housing-proof-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-proof-stack {
+    display: block;
+    position: relative;
+    margin-bottom: 2.45rem;
+    padding-bottom: 0.35rem;
+  }
+
+  .hero-proof-stack .hero-proof-figure:first-child {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-proof-figure-secondary {
+    position: absolute;
+    left: 50%;
+    bottom: 3.25rem;
+    z-index: 2;
+    width: min(52%, 16rem);
+    margin: 0;
+    transform: translateX(-50%);
+    border-radius: 0.8rem;
+    box-shadow: 0 6px 14px rgba(7, 12, 10, 0.16);
+  }
+
+  .hero-proof-figure-secondary img {
+    height: clamp(3rem, 4.4vw, 3.75rem);
+    padding: 0.42rem 0.9rem;
+  }
+
+  .hero-proof-figure-secondary figcaption {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+    bottom: 3.25rem;
+  }
+
+  .support-proof-composition {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  .support-proof-figure-secondary {
+    transform: translateY(1.25rem);
+  }
+}
+
+@media (max-width: 699px) {
+  .hero-proof-figure-secondary,
+  .support-proof-figure-secondary {
+    transform: none;
+  }
+
+  .hero-proof-figure-secondary img {
+    height: 6.25rem;
+    padding: 0.65rem;
+  }
+
+  .hero-proof-figure-secondary figcaption {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+    bottom: 3.25rem;
   }
 }
 
