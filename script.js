@@ -163,6 +163,72 @@ function pulseStageButton(stageIndex) {
   }, 700);
 }
 
+function updateHowPathPreview(stageIndex) {
+  const feedback = document.getElementById("howPathFeedback");
+  const previewStage = document.getElementById("howPathPreviewStage");
+  const previewTitle = document.getElementById("howPathPreviewTitle");
+  const previewSubtitle = document.getElementById("howPathPreviewSubtitle");
+  const previewProgress = document.getElementById("howPathPreviewProgress");
+
+  const previewData = [
+    {
+      stage: "Entry",
+      title: "Entry and orientation",
+      subtitle: "Starting with stability, orientation, and a clear baseline."
+    },
+    {
+      stage: "Stage A",
+      title: "Stage-based placement",
+      subtitle: "Building routine, consistency, and early accountability."
+    },
+    {
+      stage: "Stage B",
+      title: "Daily structure",
+      subtitle: "Strengthening responsibility and forward movement."
+    },
+    {
+      stage: "Stage C",
+      title: "Support alongside expectations",
+      subtitle: "Developing greater ownership and readiness."
+    },
+    {
+      stage: "Stage D",
+      title: "Visible progression",
+      subtitle: "Preparing for transition beyond program structure."
+    }
+  ];
+
+  const selected = previewData[stageIndex];
+
+  if (!selected) return;
+
+  if (feedback) {
+    feedback.textContent =
+      "Stage selected: " + selected.stage + " → Path Explorer is ready below.";
+  }
+
+  if (previewStage) previewStage.textContent = selected.stage;
+  if (previewTitle) previewTitle.textContent = selected.title;
+  if (previewSubtitle) previewSubtitle.textContent = selected.subtitle;
+
+  if (previewProgress) {
+    const progress = ((stageIndex + 1) / 5) * 100;
+    previewProgress.style.width = progress + "%";
+  }
+
+  const preview = document.querySelector(".how-path-preview");
+
+  if (preview) {
+    preview.classList.remove("is-updating");
+    void preview.offsetWidth;
+    preview.classList.add("is-updating");
+
+    window.setTimeout(() => {
+      preview.classList.remove("is-updating");
+    }, 260);
+  }
+}
+
 const flowSteps = document.querySelectorAll(".flow-step");
 const flowPanelContents = document.querySelectorAll(".flow-panel-content");
 
@@ -181,6 +247,20 @@ function openFlowStep(stepNumber) {
 
   if (!Number.isNaN(stageIndex) && typeof renderStage === "function") {
     renderStage(stageIndex);
+    updateHowPathPreview(stageIndex);
+
+    const bridge = document.querySelector(".how-path-bridge");
+
+    if (bridge && window.innerWidth < 768) {
+      const bridgeTop = bridge.getBoundingClientRect().top + window.scrollY;
+      const headerOffset = header ? header.offsetHeight : 80;
+      const gentleOffset = headerOffset + 18;
+
+      window.scrollTo({
+        top: Math.max(bridgeTop - gentleOffset, 0),
+        behavior: "smooth"
+      });
+    }
   }
 }
 
@@ -197,11 +277,23 @@ flowPanelCtas.forEach((cta) => {
 
     if (!Number.isNaN(stageIndex) && typeof renderStage === "function") {
       renderStage(stageIndex);
+      updateHowPathPreview(stageIndex);
       pulseStageButton(stageIndex);
     }
   });
 });
 
+const howPathBridgeCta = document.querySelector(".how-path-bridge-cta");
+
+if (howPathBridgeCta) {
+  howPathBridgeCta.addEventListener("click", () => {
+    const feedback = document.getElementById("howPathFeedback");
+
+    if (feedback) {
+      feedback.textContent = "Opening selected stage → Scroll to view details.";
+    }
+  });
+}
 
 const contactTabs = document.querySelectorAll(".contact-tab");
 const contactPanels = document.querySelectorAll(".contact-panel");

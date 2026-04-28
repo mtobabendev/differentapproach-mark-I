@@ -91,6 +91,17 @@ ol {
   background: #1b231f;
 }
 
+#how-it-works {
+  padding-bottom: 3rem;
+  background: #151b18;
+}
+
+#housing-path {
+  padding-top: 3rem;
+  background:
+    linear-gradient(180deg, #151b18 0%, #1b231f 18%, #1b231f 100%);
+}
+
 .eyebrow,
 .card-kicker,
 .overview-kicker {
@@ -688,6 +699,7 @@ ol {
 
 .how-it-works-outcomes {
   margin-top: 1rem;
+  margin-bottom: 0;
 }
 
 .how-flow {
@@ -825,6 +837,77 @@ ol {
   color: #d8d2c7;
 }
 
+.how-path-bridge .how-path-feedback {
+  margin-top: 0.5rem;
+  font-weight: 700;
+  color: #a8cec3;
+}
+
+.how-path-preview {
+  display: grid;
+  gap: 0.3rem;
+  margin-top: 0.85rem;
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(168, 206, 195, 0.35);
+  border-radius: 1rem;
+  background: rgba(47, 111, 99, 0.18);
+  box-shadow: inset 0 0 0 1px rgba(243, 239, 230, 0.04);
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease,
+    border-color 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.how-path-preview.is-updating {
+  transform: translateY(6px);
+  opacity: 0.68;
+  border-color: rgba(168, 206, 195, 0.55);
+  background: rgba(47, 111, 99, 0.24);
+}
+
+.how-path-preview-kicker {
+  color: #a8cec3;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+#howPathPreviewStage {
+  color: #f3efe6;
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  line-height: 1.05;
+}
+
+#howPathPreviewTitle {
+  color: #f3efe6;
+  font-weight: 800;
+}
+
+#howPathPreviewSubtitle {
+  margin: 0;
+  color: #d8d2c7;
+}
+
+.how-path-preview-rail {
+  width: 100%;
+  height: 0.5rem;
+  margin-top: 0.65rem;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(243, 239, 230, 0.16);
+}
+
+#howPathPreviewProgress {
+  display: block;
+  width: 20%;
+  height: 100%;
+  border-radius: inherit;
+  background: #a8cec3;
+  transition: width 0.25s ease;
+}
+
 .how-path-bridge-cta {
   justify-self: start;
 }
@@ -915,7 +998,7 @@ ol {
   animation: stagePulse 0.7s ease;
 }
 
- stagePulse {
+@keyframes stagePulse {
   0% {
     box-shadow: 0 0 0 0 rgba(47, 111, 99, 0.65);
   }
@@ -2058,6 +2141,12 @@ ol {
   .support-contact-block {
     margin-top: 2rem;
     padding-top: 1.75rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .how-path-preview {
+    padding: 0.9rem;
   }
 }
 
