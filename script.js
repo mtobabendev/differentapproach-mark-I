@@ -149,6 +149,60 @@ if (nextButton) {
 
 renderStage(0);
 
+function pulseStageButton(stageIndex) {
+  const targetDot = stageButtons[stageIndex];
+
+  if (!targetDot) return;
+
+  targetDot.classList.remove("pulse");
+  void targetDot.offsetWidth;
+  targetDot.classList.add("pulse");
+
+  setTimeout(() => {
+    targetDot.classList.remove("pulse");
+  }, 700);
+}
+
+const flowSteps = document.querySelectorAll(".flow-step");
+const flowPanelContents = document.querySelectorAll(".flow-panel-content");
+
+function openFlowStep(stepNumber) {
+  flowSteps.forEach((step) => {
+    const isActive = step.dataset.step === stepNumber;
+    step.classList.toggle("active", isActive);
+    step.setAttribute("aria-expanded", String(isActive));
+  });
+
+  flowPanelContents.forEach((panel) => {
+    panel.classList.toggle("active", panel.dataset.step === stepNumber);
+  });
+
+  const stageIndex = Number(stepNumber) - 1;
+
+  if (!Number.isNaN(stageIndex) && typeof renderStage === "function") {
+    renderStage(stageIndex);
+  }
+}
+
+flowSteps.forEach((step) => {
+  step.addEventListener("click", () => openFlowStep(step.dataset.step));
+});
+
+
+const flowPanelCtas = document.querySelectorAll(".flow-panel-cta");
+
+flowPanelCtas.forEach((cta) => {
+  cta.addEventListener("click", () => {
+    const stageIndex = Number(cta.dataset.stage);
+
+    if (!Number.isNaN(stageIndex) && typeof renderStage === "function") {
+      renderStage(stageIndex);
+      pulseStageButton(stageIndex);
+    }
+  });
+});
+
+
 const contactTabs = document.querySelectorAll(".contact-tab");
 const contactPanels = document.querySelectorAll(".contact-panel");
 const contactLinks = document.querySelectorAll("[data-contact-target]");
