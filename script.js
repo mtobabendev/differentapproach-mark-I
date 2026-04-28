@@ -205,11 +205,17 @@ function setActiveLinkGroup(links, activeId) {
   });
 }
 
-function setActiveDestination(destinationId) {
-  setActiveLinkGroup(navMap, destinationId);
+function getNavActiveId(destinationId) {
+  return destinationId === "contact" ? "support-services" : destinationId;
+}
 
-  if (bottomNavSectionIds.includes(destinationId)) {
-    setActiveLinkGroup(bottomNavMap, destinationId);
+function setActiveDestination(destinationId) {
+  const activeId = getNavActiveId(destinationId);
+
+  setActiveLinkGroup(navMap, activeId);
+
+  if (bottomNavSectionIds.includes(activeId)) {
+    setActiveLinkGroup(bottomNavMap, activeId);
   }
 }
 
@@ -237,30 +243,44 @@ function handleProgrammaticNavClick(event) {
   link.addEventListener("click", handleProgrammaticNavClick);
 });
 
+function getActiveSectionId(sectionList, activationLine, fallbackId = "") {
+  let activeId = fallbackId;
+
+  sectionList.forEach((section) => {
+    const rect = section.getBoundingClientRect();
+
+    if (rect.top <= activationLine) {
+      activeId = section.id;
+    }
+
+    if (rect.top <= activationLine && rect.bottom > 0) {
+      activeId = section.id;
+    }
+  });
+
+  return activeId;
+}
+
+function getActiveBottomNavId(activationLine) {
+  const activeVisibleBottomSection = bottomNavSections.find((section) => {
+    const rect = section.getBoundingClientRect();
+    return rect.top <= activationLine && rect.bottom > 0;
+  });
+
+  if (activeVisibleBottomSection) {
+    return activeVisibleBottomSection.id;
+  }
+
+  return getActiveSectionId(bottomNavSections, activationLine, bottomNavSectionIds[0] || "");
+}
+
 function setActiveNav() {
   if (isProgrammaticScroll) return;
 
   const headerOffset = header ? header.offsetHeight : 90;
   const activationLine = headerOffset + window.innerHeight * 0.32;
-
-  let currentId = sections[0] ? sections[0].id : "";
-  let currentBottomId = bottomNavSectionIds[0] || "";
-
-  sections.forEach((section) => {
-    const rect = section.getBoundingClientRect();
-
-    if (rect.top <= activationLine && rect.bottom > headerOffset) {
-      currentId = section.id;
-    }
-  });
-
-  bottomNavSections.forEach((section) => {
-    const rect = section.getBoundingClientRect();
-
-    if (rect.top <= activationLine && rect.bottom > headerOffset) {
-      currentBottomId = section.id;
-    }
-  });
+  const currentId = getActiveSectionId(sections, activationLine, sections[0] ? sections[0].id : "");
+  const currentBottomId = getActiveBottomNavId(activationLine);
 
   setActiveLinkGroup(navMap, currentId);
   setActiveLinkGroup(bottomNavMap, currentBottomId);
