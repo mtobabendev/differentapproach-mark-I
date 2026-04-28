@@ -2193,3 +2193,68 @@ ol {
     width: 100%;
   }
 }
+
+.support-people-block {
+  margin-top: 2.25rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(168, 206, 195, 0.18);
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.support-people-heading {
+  max-width: 760px;
+  margin-bottom: 1.15rem;
+}
+
+.support-people-heading h3 {
+  margin-bottom: 0.7rem;
+  color: #f3efe6;
+  font-size: clamp(1.45rem, 2.4vw, 2rem);
+  line-height: 1.15;
+}
+
+.support-people-heading p:last-child {
+  margin-bottom: 0;
+  color: #d8d2c7;
+}
+
+.support-people-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.support-person-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.support-person-card .text-link {
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.support-contact-block .section-heading h2 {
+  color: #f3efe6;
+}
+
+.support-contact-block .section-heading p {
+  color: #d8d2c7;
+}
+
+.support-contact-block .section-heading .eyebrow {
+  color: #a8cec3;
+}
+
+@media (min-width: 768px) {
+  .support-people-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .support-people-block {
+    margin-top: 1.75rem;
+    padding: 1.15rem;
+  }
+}
