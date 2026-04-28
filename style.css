@@ -437,7 +437,7 @@ ol {
 }
 
 .overview-head {
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
 }
 
 .overview-card h2 {
@@ -477,10 +477,13 @@ ol {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.65rem;
+  margin-bottom: 1rem;
 }
 
 .path-line-race li {
   justify-content: center;
+  min-height: 2.8rem;
+  padding: 0.65rem 0.9rem;
   text-align: center;
 }
 
@@ -493,7 +496,19 @@ ol {
 .path-line-race .path-stage-finish {
   width: 100%;
   border-radius: 1rem;
-  background: rgba(47, 111, 99, 0.13);
+}
+
+.path-line-race .path-stage-start {
+  background: rgba(47, 111, 99, 0.11);
+}
+
+.path-line-race .path-stage-mid {
+  background: rgba(47, 111, 99, 0.08);
+}
+
+.path-line-race .path-stage-finish {
+  background: rgba(47, 111, 99, 0.18);
+  color: var(--accent-strong);
 }
 
 .path-line-race .path-stage-start::after,
@@ -506,10 +521,15 @@ ol {
   display: none;
 }
 
+.overview-text {
+  max-width: 58ch;
+  margin-bottom: 0;
+}
+
 .overview-metrics {
   display: grid;
   gap: 0.75rem;
-  margin-top: 1.5rem;
+  margin-top: 1.15rem;
 }
 
 .metric-chip {
@@ -517,6 +537,7 @@ ol {
   align-items: baseline;
   justify-content: space-between;
   gap: 1rem;
+  min-height: 3.25rem;
   padding: 0.9rem 1rem;
   border: 1px solid var(--border);
   border-radius: 1rem;
@@ -1647,6 +1668,26 @@ ol {
 }
 
 @media (max-width: 699px) {
+  .hero-copy {
+    display: contents;
+  }
+
+  .hero-copy .eyebrow,
+  .hero-copy h1,
+  .hero-copy .hero-text,
+  .hero-actions,
+  .hero-points {
+    order: 1;
+  }
+
+  .hero-panel {
+    order: 2;
+  }
+
+  .hero-founder-proof {
+    order: 3;
+  }
+
   .section {
     padding: 3.6rem 0;
   }
@@ -1710,7 +1751,18 @@ ol {
     display: none;
   }
 
-  .overview-card,
+  .overview-card {
+    padding: 1.35rem;
+  }
+
+  .overview-card h2 {
+    font-size: clamp(1.65rem, 8vw, 2.25rem);
+  }
+
+  .path-line-race li {
+    min-height: 2.65rem;
+  }
+
   .hook-panel,
   .cta-panel,
   .path-stage-panel,
@@ -1724,7 +1776,7 @@ ol {
 
   .metric-chip {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
 }
 
