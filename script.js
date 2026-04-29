@@ -464,3 +464,18 @@ izardShowcaseButtons.forEach((button) => {
   });
 });
 
+const maintenanceForm = document.querySelector(".maintenance-form");
+
+if (maintenanceForm) {
+  maintenanceForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const message = maintenanceForm.parentElement.querySelector(".maintenance-confirmation");
+
+    if (message) {
+      message.hidden = false;
+    }
+
+    maintenanceForm.reset();
+  });
+}
